@@ -20,5 +20,10 @@ RSpec.describe Actor do
       expect(Actor.working_by_age.last).to eq @mike
       expect(Actor.working_by_age.include?(@harrison)).to eq false
     end
+
+    it 'finds actor by name' do
+      expect(Actor.find_by_name("Scarlett Jo")).to eq @scarlett
+      expect(Actor.find_by_name("Simon")).to eq nil
+    end
   end
 end
