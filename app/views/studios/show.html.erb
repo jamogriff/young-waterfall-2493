@@ -3,13 +3,25 @@
 <h3>Movies:</h3>
 <ul>
   <% @studio.movies.each do |m| %>
-    <li><%= m.title %></li>
+    <div id="movie-<%=m.id%>">
+    <li>Title: <%= m.title %></li>
+    <li>Genre: <%= m.genre %></li>
+    <li>Year: <%= m.creation_year %></li>
+    <strong>Actors: </strong>
+    <p>
+    <% m.actors.each do |act| %>
+      <%= act.name %>, 
+    <% end %>
+    </p>
+    </div>
 </ul>
 <% end %>
 
-<h3>Our Currently Working Actors:</h3>
-<ul>
-  <% @studio.select_actors.each do |act| %>
-    <li><%= act.name %> | <%= act.age %> Years Old</li>
-</ul>
-<% end %>
+<section id="all-actors">
+  <h3>Our Currently Working Actors:</h3>
+  <ul>
+    <% @studio.select_actors.each do |act| %>
+      <li><%= act.name %> | <%= act.age %> Years Old</li>
+  </ul>
+  <% end %>
+</section>

@@ -30,9 +30,24 @@ RSpec.describe 'Studio info page' do
 
     it 'has list of currently working actors ordered by age' do
       visit "/studios/#{@marvel.id}"
-      expect(@scarlett.name).to appear_before(@mike.name)
-      expect(page).not_to have_content @harrison.name
+      within "section#all-actors" do
+        expect(@scarlett.name).to appear_before(@mike.name)
+        expect(page).not_to have_content @harrison.name
+      end
     end
+
+    it 'lists movies details and all actors in that movie' do
+      visit "/studios/#{@marvel.id}"
+      save_and_open_page
+      within "div#movie-#{@iron_man.id}" do
+        expect(page).to have_content @harrison.name
+        expect(page).to have_content @mike.name
+        expect(page).to have_content @iron_man.creation_year
+        expect(page).to have_content @iron_man.genre
+        expect(page).not_to have_content @scarlett.name
+      end
+    end
+
   end
 
 end
