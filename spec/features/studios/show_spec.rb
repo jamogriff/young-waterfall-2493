@@ -38,7 +38,6 @@ RSpec.describe 'Studio info page' do
 
     it 'lists movies details and all actors in that movie' do
       visit "/studios/#{@marvel.id}"
-      save_and_open_page
       within "div#movie-#{@iron_man.id}" do
         expect(page).to have_content @harrison.name
         expect(page).to have_content @mike.name
