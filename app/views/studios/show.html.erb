@@ -6,3 +6,10 @@
     <li><%= m.title %></li>
 </ul>
 <% end %>
+
+<h3>Our Currently Working Actors:</h3>
+<ul>
+  <% @studio.select_actors.each do |act| %>
+    <li><%= act.name %> | <%= act.age %> Years Old</li>
+</ul>
+<% end %>
