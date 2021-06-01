@@ -28,10 +28,12 @@ RSpec.describe 'Movie info page' do
     end
 
     it 'has sad path form functionality' do
+      skip "experimental"
       visit "/movies/#{@iron_man.id}"
-      fill_in "actor_name", with: "Scarlett Jo"
+      fill_in "actor_name", with: "Garbage Jo"
       click_button "Submit"
-      expect(page).to have_content @scarlett.name
+      save_and_open_page
+      expect(page).to have_content "Error! Actor Doesn't Exist"
     end
   end
 end

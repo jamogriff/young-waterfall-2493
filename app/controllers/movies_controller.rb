@@ -11,6 +11,8 @@ class MoviesController < ApplicationController
       @movie.actors << actor
       render :show
     else
+      # experimental 
+      render :show
       flash[:alert] = "Error! Actor Doesn't Exist!"
     end
   end

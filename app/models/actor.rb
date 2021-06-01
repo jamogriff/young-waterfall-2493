@@ -9,5 +9,10 @@ class Actor < ApplicationRecord
   def self.find_by_name(name)
     where("name = '#{name}'").first
   end
+
+
+  def self.coactors_of(actor_id)
+    #binding.pry
+  end
 end
 
